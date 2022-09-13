@@ -8,7 +8,10 @@ function getCategories() {
         .then((data) => selectCategories(data))
 }
 
-// Gets the categories' options from the previous API call and adds each category to an option element
+/**
+ * It takes the data from the API and creates an option element for each category in the data
+ * @param data - The data returned from the API.
+ */
 function selectCategories(data) {
     let content = document.getElementById('category');
     
@@ -17,7 +20,10 @@ function selectCategories(data) {
     });
 }
 
-// Gets the questions when the user clicks on the button, calls the API based on the number of questions, category, level of difficulty, and type of question chosen. 
+/**
+ * It takes the user's input from the form and uses it to create a url that is then used to fetch the
+ * questions from the API.
+ */
 function getQuestions() {
     let numberOfQuestions = document.getElementById('questions').value;
     let categorySelected = document.getElementById('category').value;
@@ -37,7 +43,13 @@ function getQuestions() {
     score.innerHTML = '';
 }
 
-// The function is called in the API call, prints each question available depending on the parameters chosen by the user. Also gets the answers of each question, both correct and incorrect, and the prints them by calling getAnswersHTML().
+/**
+ * The function is called in the API call, prints each question available depending on the parameters chosen by the user.
+ * Also gets the answers of each question, both correct and incorrect. 
+ * And the prints them by calling getAnswersHTML().
+ * It takes the data from the API and prints it to the page
+ * @param info - the response from the API
+ */
 function printQuestions(info) {
     let content = document.getElementById('questions-container');
 
@@ -71,7 +83,19 @@ function printQuestions(info) {
     }
 }
 
-// Prints the answers for the questions. Checks if the result array that is return from the API call is empty or not. Checks if the current answer inside the loop is the correct one, if it is, it adds 'correct' as its value, if not, it adds 'incorrect' to its value. 
+/**
+ * Prints the answers for the questions. Checks if the result array that is return from the API call is empty or not. 
+ * Checks if the current answer inside the loop is the correct one, if it is, it adds 'correct' as its value, if not, it adds 'incorrect' to its value. 
+ * It takes an array of answers, the index of the question, and the correct answer, and returns a
+ * string of HTML for the answers.
+ * @param randomAnswers - an array of answers that have been randomized
+ * @param index - the index of the question in the array
+ * @param cAnswer - correct answer
+ * @returns &lt;div class="form-check"&gt;
+ *                     &lt;input class="form-check-input" type="radio" name="group0" id="answer1"
+ * value="correct" required=""&gt;
+ *                     &lt;label class="form-check-label" for="answer10"&gt;
+ */
 function getAnswersHTML(randomAnswers, index, cAnswer) {
 
     let result = '';
@@ -95,7 +119,13 @@ function getAnswersHTML(randomAnswers, index, cAnswer) {
     return result;
 }
 
-// Upon form submittion. Gets the value of the selections made by the user. Loops through all the selections and checks if the answer selected is the correct answer, if it is, adds 1 to the counter. 
+/**
+ * Upon form submittion. Gets the value of the selections made by the user. 
+ * Loops through all the selections and checks if the answer selected is the correct answer, if it is, adds 1 to the counter. 
+ * It takes the value of the radio button that is checked and compares it to the value of the correct
+ * answer. If the value of the checked radio button is equal to the value of the correct answer, then
+ * the counter is increased by 100 and the counterright is increased by 1
+ */
 function validatingAnswers() {
     let counter = 0;
     let counterright = 0;
@@ -113,7 +143,12 @@ function validatingAnswers() {
     printScore(counter, counterright, length);
 }
 
-// Receives counter and length from validatingAnswers(), adds the innerHTML for the score portion, it uses the counter to keep track of the right answers and length to know the number of questions being asked. 
+/**
+ * It takes 3 parameters, and then it creates a div with the score inside
+ * @param counter - the total score
+ * @param counterright - the number of correct answers
+ * @param length - the length of the array of questions
+ */
 function printScore(counter, counterright, length) {
     let content = document.getElementById('score-container');
 
