@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilos.css">
+    <title>TriviGenerator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body onload="getCategories()">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="mb-3">
+
+                <form onsubmit="event.preventDefault()" id="trivia-form" class="triviaContainer" action="">
+                    <div id="card" class="card d-flex align-items-center justify-content-center mt-5 mb-4">
+                        <div class="card-body">
+                            <h1 class="card-title text-center mb-4">SuperTrivia</h1>
+                            <div class="form-group">
+                                <label for="questions">Number of Questions</label>
+                                <select class="form-select mb-3" aria-label="Selection of number of questions"
+                                    id="questions">
+                                    <option value="10" id="tenq">10</option>
+                                    <option value="20" id="twentyq">20</option>
+                                    <option value="30" id="thirtyq">30</option>
+                                    <option value="40" id="fourtyq">40</option>
+                                    <option value="50" id="fiftyq">50</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-select mb-3" aria-label="Selection of category" id="category">
+                                    <!-- JS content goes here -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="difficulty">Level of Difficulty</label>
+                                <select class="form-select mb-3" aria-label="Selection of level of difficulty"
+                                    id="difficulty">
+                                    <option value="easy" id="easy">Easy</option>
+                                    <option value="medium" id="medium">Medium</option>
+                                    <option value="hard" id="hard">Hard</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="type">Type of Questions</label>
+                                <select class="form-select mb-3" aria-label="Selection of type of questions" id="type">
+                                    <option value="multiple" id="multiple">Multiple Choice</option>
+                                    <option value="boolean" id="boolean">True / False</option>
+                                </select>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary mt-2" onclick="getQuestions()">Show
+                                    Questions</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            
+
+        <div class="col">
+            <form id="form-questions" onsubmit="event.preventDefault(), validatingAnswers()" action="">
+                <div id="questions-container" class="row">
+                    <!-- content goes inside -->
+                </div>
+            </form>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col" id="score-container">
+                <!-- content goes in here -->
+
+                <!-- <div id="restartbutton" class="d-flex justify-content-center stopCard">
+                    <button type="reset" class="btn btn-primary mt-2" onclick="preventDefault()">Restart</button>
+                </div> -->
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    <script src="./../src/services/index.js"></script>
+</body>
+
+</html>
